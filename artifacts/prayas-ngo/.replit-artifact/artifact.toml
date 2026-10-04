@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Prayas Sahyog Sewa Samiti"
+description = "A responsive public website for Prayas Sahyog Sewa Samiti in Bareilly, sharing its social-service work, team, members, public documents, upcoming initiatives, and contact details."
+version = "1.0.0"
+id = "artifacts/prayas-ngo"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24075
+
+[services.development]
+run = "pnpm --filter @workspace/prayas-ngo run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/prayas-ngo", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/prayas-ngo/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24075"
+BASE_PATH = "/"
