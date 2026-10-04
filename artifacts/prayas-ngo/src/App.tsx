@@ -198,7 +198,7 @@ function Documents() {
   </PageFrame>;
 }
 
-function संपर्क() {
+function Contact() {
   const [feedback, setFeedback] = useState('');
   const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
